@@ -139,6 +139,7 @@ The appearance of forks of AFL is first of all related to the changes and improv
 - [Qsym](https://github.com/sslab-gatech/qsym) - practical Concolic Execution Engine Tailored for Hybrid Fuzzing. Essentially, it is a symbolic execution engine (basic components are realized as a plugin for intel pin) that together with AFL performs hybrid fuzzing. This is a stage in the evolution of feedback-based fuzzing and calls for a separate discussion. Its main advantage is that can do concolic execution relatively fast. This is due to the native execution of commands without intermediate representation of code, snapshots, and some heuristics. It uses the old Intel pin (due to support problems between libz3 and other DBTs) and currently can work with elf x86 and x86_64 architectures.
 - [Superion](https://github.com/zhunki/Superion) - greybox fuzzer, an obvious advantage of which is that along with an instrumented program it also gets specification of input data using the ANTLR grammar and after that performs mutations with the help of this grammar.
 - [AFLSmart](https://github.com/aflsmart/aflsmart) - another Graybox fuzzer. As input, it gets specification of input data in the format used by the Peach fuzzer.
+- [afl++](https://github.com/vanhauser-thc/AFLplusplus) - actively maintained fork with community patches, AFLfast power schedules, qemu 3.1 upgrade + laf-intel support, MOpt mutators, InsTrim instrumentation, unicorn_mode and a lot more! 
 
 There are many research papers dedicated to the implementation of the new approaches and fuzzing techniques where AFL is modified. Only white papers are available, so we didn't even bother mentioning those. You can google them if you want. For example, some of the latest are [CollAFL: Path Sensitive Fuzzing](https://chao.100871.net/papers/oakland18.pdf), [EnFuzz](https://arxiv.org/pdf/1807.00182.pdf), [Efficient approach to fuzzing interpreters](https://i.blackhat.com/asia-19/Fri-March-29/bh-asia-Dominiak-Efficient-Approach-to-Fuzzing-Interpreters-wp.pdf), [ML](https://arxiv.org/pdf/1811.08973.pdf) for AFL.
 
@@ -163,7 +164,9 @@ There are many research papers dedicated to the implementation of the new approa
 
 An example of working with this modification [afl-unicorn: Fuzzing Arbitrary Binary Code](https://hackernoon.com/afl-unicorn-fuzzing-arbitrary-binary-code-563ca28936bf) and [afl-unicorn: Part 2 — Fuzzing the ‘Unfuzzable’](https://hackernoon.com/afl-unicorn-part-2-fuzzing-the-unfuzzable-bea8de3540a5).
 
-Before we go on to the modifications based on the frameworks of dynamic binary instrumentation (DBI), let's not forget that the highest speed of these frameworks is shown by DynamoRIO, Dynlnst and, finally, PIN.
+A quicker implementation of Unicorn AFL (unicornafl) is provided as part of [afl++](https://github.com/vanhauser-thc/AFLplusplus/tree/master/unicorn_mode)
+
+Before we go on to the modifications based on the frameworks of dynamic binary instrumentation (DBI), let's not forget that the highest speed of these frameworks is shown by DynamoRIO, Dynlnst and, finally, PIN. 
 
 ## PIN-based modifications
 
